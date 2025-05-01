@@ -422,6 +422,15 @@ ul {
     font-size: 16px;
 }
 
+.contact-form input[type="tel"] {
+    padding: 12px;
+    background: #252525;
+    border: none;
+    border-radius: 5px;
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
 .contact-form textarea {
     resize: vertical;
     min-height: 100px;
@@ -456,6 +465,60 @@ ul {
 
 .social-links a:hover {
     color: #ff6f61;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background: #20b858;
+}
+
+/* Floating Action Buttons */
+.floating-actions {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.fab-item {
+    background: #1c1c1c;
+    color: #e0e0e0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.fab-item:hover {
+    background: #ff6f61;
+    transform: scale(1.1);
 }
 
 /* Footer */
@@ -524,6 +587,27 @@ footer {
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Adjust floating buttons for mobile */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .floating-actions {
+        bottom: 80px;
+        right: 15px;
+        gap: 8px;
+    }
+
+    .fab-item {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -549,6 +633,38 @@ footer {
     .website-content p,
     .services-content p {
         font-size: 16px;
+    }
+
+    /* Further adjust floating buttons for smaller screens */
+    .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .floating-actions {
+        bottom: 70px;
+        right: 10px;
+        gap: 6px;
+    }
+
+    .fab-item {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .contact-form button {
+        font-size: 16px;
+        padding: 10px;
     }
 }
 
