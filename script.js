@@ -50,24 +50,49 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
-// Contact Form Submission (Placeholder)
-const contactForm = document.querySelector('.contact-form');
+// Contact Form Submission with WhatsApp Integration
+const contactForm = document.querySelector('#whatsapp-form');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Basic form validation
+    // Get form values
     const name = contactForm.querySelector('input[name="name"]').value.trim();
     const email = contactForm.querySelector('input[name="email"]').value.trim();
+    const phone = contactForm.querySelector('input[name="phone"]').value.trim();
     const message = contactForm.querySelector('textarea[name="message"]').value.trim();
     
-    if (name && email && message) {
-        // Placeholder for form submission logic
-        alert('Thank you for your message! I’ll get back to you soon.');
-        contactForm.reset();
-    } else {
+    // Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+    
+    if (!name || !email || !phone || !message) {
         alert('Please fill out all fields.');
+        return;
     }
+    
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    
+    if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
+    
+    // Format WhatsApp message
+    const whatsappMessage = `Name: ${encodeURIComponent(name)}\nEmail: ${encodeURIComponent(email)}\nPhone: ${encodeURIComponent(phone)}\nMessage: ${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/919515022680?text=${whatsappMessage}`;
+    
+    // Show success feedback
+    alert('Your message is being sent via WhatsApp!');
+    
+    // Redirect to WhatsApp
+    window.open(whatsappURL, '_blank');
+    
+    // Reset form
+    contactForm.reset();
 });
 
 // Close Mobile Menu on Resize (if window is enlarged)
